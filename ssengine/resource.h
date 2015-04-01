@@ -22,12 +22,7 @@ typedef struct ss_resource_ref{
 	const ss_resource_prototype* const	prototype;
 	const int							device_type;
 	void*								ptr;
-	void*								extra_info_ptr;
 } ss_resource_ref;
-
-typedef struct ss_userdata_resource {
-	ss_resource_ref *res;
-} ss_userdata_resource;
 
 typedef struct ss_resource_type{}  ss_resource_type;
 
@@ -91,18 +86,6 @@ struct ss_resource_reference
 		return ptr;
 	}
 
-	void set(res_type *_ptr) {
-		ptr = _ptr;
-	}
-
-	void * get_extra_info_ptr() {
-		return extra_info_ptr;
-	}
-
-	void set_extra_info_ptr(void *_ptr) {
-		extra_info_ptr = _ptr;
-	}
-
 	static this_type* wrap(ss_resource_ref* ref){
 		return reinterpret_cast<this_type*>(ref);
 	}
@@ -120,7 +103,6 @@ struct ss_resource_reference
     }
 private:
 	res_type*						ptr;
-	void*							extra_info_ptr;
 };
 
 #endif
